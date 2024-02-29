@@ -11,7 +11,7 @@ const COL_DEFAULT = {
   width: 100
 }
 const CELL_IDENTITY_KEYS = ["row", "cell"]
-const CELL_ATTRIBUTES = ["rowspan", "colspan"]
+const CELL_ATTRIBUTES = ["rowspan", "colspan", "style"]
 const CELL_DEFAULT = {
   rowspan: 1,
   colspan: 1
@@ -135,6 +135,8 @@ class TableCell extends Container {
       node.setAttribute('data-cell-bg', value['cell-bg'])
       node.style.backgroundColor = value['cell-bg']
     }
+
+    node.setAttribute('style', 'border: 1px solid #000; padding: 2px 5px;');
 
     return node
   }
@@ -461,7 +463,7 @@ class TableContainer extends Container {
         row.domNode.getBoundingClientRect(),
         editorWrapper
       )
-      
+
       return rowRect.y > compareRect.y - ERROR_LIMIT &&
         rowRect.y1 < compareRect.y1 + ERROR_LIMIT
     })
